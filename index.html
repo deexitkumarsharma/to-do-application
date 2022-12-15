@@ -8,20 +8,67 @@
   <title>Todo App</title>
 </head>
 <body>
-  <h1>Todo App</h1>
-  <form>
-    <input type="text"required>
-    <input type="submit">
-  </form>
-  <table>
-    <thead>
-      <tr>
-        <th>Todo's</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <!-- tbody for dynamically display our data -->
-    <tbody></tbody> 
-  </table>
+
+  <div class="wrapper">
+    <div class="task-input">
+      <input type="text" placeholder="What needs to be done?">
+    </div>
+    <div class="controls">
+      <div class="filters">
+        <span id="all" class="active">All</span>
+        <span id="pending">Pending</span>
+        <span id="completed">Completed</span>
+      </div>
+      <button class="clear-btn">CLEAR ALL</button>
+    </div>
+    <ul class="task-box">
+
+
+      <li class="task">
+        <label for="1">
+          <input type="checkbox" id="1">
+          <p>Renew gym</p>
+        </label>
+        <div class="settings">
+          <i class="uil uil-ellipsis-h"></i>
+          <ul class="task-menu">
+            <li><i class="uil uil-pen"></i>Edit</li>
+            <li><i class="uil uil-trash"></i>Delete</li>
+
+          </ul>
+        </div>
+      </li>
+            <li class="task">
+        <label for="1">
+          <input type="checkbox" id="1">
+          <p>Renew gym</p>
+        </label>
+        <div class="settings">
+          <i class="uil uil-ellipsis-h"></i>
+        </div>
+      </li>
+            <li class="task">
+        <label for="1">
+          <input type="checkbox" id="1">
+          <p>Renew gym</p>
+        </label>
+        <div class="settings">
+          <i class="uil uil-ellipsis-h"></i>
+        </div>
+      </li>
+            <li class="task">
+        <label for="1">
+          <input type="checkbox" id="1">
+          <p>Renew gym</p>
+        </label>
+        <div class="settings">
+          <i class="uil uil-ellipsis-h"></i>
+        </div>
+      </li>
+
+
+    </ul>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
