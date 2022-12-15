@@ -1,74 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Todo App</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <title>To-do list</title>
 </head>
+
 <body>
-
-  <div class="wrapper">
-    <div class="task-input">
-      <input type="text" placeholder="What needs to be done?">
-    </div>
-    <div class="controls">
-      <div class="filters">
-        <span id="all" class="active">All</span>
-        <span id="pending">Pending</span>
-        <span id="completed">Completed</span>
+  <main class="app">
+    <h1>My Todo List...</h1>
+    <div class="input-header">
+      <h1><span id="date"></span></h1>
+      <div class="to-do-input">
+        <input type="text" id="item" placeholder="What needs to be done..." /><button id="enter">Enter</button>
       </div>
-      <button class="clear-btn">CLEAR ALL</button>
     </div>
-    <ul class="task-box">
+    <div class="to-do-list"></div>
+  </main>
 
-
-      <li class="task">
-        <label for="1">
-          <input type="checkbox" id="1">
-          <p>Renew gym</p>
-        </label>
-        <div class="settings">
-          <i class="uil uil-ellipsis-h"></i>
-          <ul class="task-menu">
-            <li><i class="uil uil-pen"></i>Edit</li>
-            <li><i class="uil uil-trash"></i>Delete</li>
-
-          </ul>
-        </div>
-      </li>
-            <li class="task">
-        <label for="1">
-          <input type="checkbox" id="1">
-          <p>Renew gym</p>
-        </label>
-        <div class="settings">
-          <i class="uil uil-ellipsis-h"></i>
-        </div>
-      </li>
-            <li class="task">
-        <label for="1">
-          <input type="checkbox" id="1">
-          <p>Renew gym</p>
-        </label>
-        <div class="settings">
-          <i class="uil uil-ellipsis-h"></i>
-        </div>
-      </li>
-            <li class="task">
-        <label for="1">
-          <input type="checkbox" id="1">
-          <p>Renew gym</p>
-        </label>
-        <div class="settings">
-          <i class="uil uil-ellipsis-h"></i>
-        </div>
-      </li>
-
-
-    </ul>
-  </div>
   <script src="script.js"></script>
 </body>
+
 </html>
