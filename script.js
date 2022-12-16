@@ -6,6 +6,7 @@ const taskInput = document.querySelector(".task-input input"),
 let editId,
   isEditTask = false,
   todos = JSON.parse(localStorage.getItem("todo-list"));
+  console.log(todos);
 
 filters.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -85,20 +86,33 @@ function deleteTask(event) {
   }
 }
 
-taskbox.addEventListener("click", findCountOfUncheckedTasks);
 // count all pending task
-function findCountOfUncheckedTasks(e) {
-  let noOfUncheckedTasks = document.querySelector(".items-left");
-  let countOfUncheckedTasks = 0;
-  newInputs = document.querySelectorAll("input#jalena");
+taskbox.addEventListener("click", counter());
 
-  newInputs.forEach((input) => {
-    if (input.checked === false) {
-      countOfUncheckedTasks++;
+// function findCountOfUncheckedTasks(e) {
+//   let noOfUncheckedTasks = document.querySelector(".items-left");
+//   let countOfUncheckedTasks = 0;
+//   newInputs = document.querySelectorAll("#jalena");
+
+//   newInputs.forEach((input) => {
+//     if (input.checked === false) {
+//       countOfUncheckedTasks++;
+//     }
+//   });
+//   noOfUncheckedTasks.innerText = countOfUncheckedTasks + " tasks left";
+// }
+
+function counter(){
+  let res = document.querySelector(".items-left");
+  let c=0;
+  todos.forEach((elem)=>{
+    if(elem.status=='pending'){
+      c++;
     }
-  });
-  noOfUncheckedTasks.innerText = countOfUncheckedTasks + " tasks left";
+  })
+  res.innerText=c+"items left"
 }
+
 
 clearAll.addEventListener("click", () => {
   isEditTask = false;
