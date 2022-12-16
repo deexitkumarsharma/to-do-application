@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <title>To-do list</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-  <title>To-do list</title>
-</head>
-
-<body>
-  <main class="app">
-    <h1>My Todo List...</h1>
-    <div class="input-header">
-      <h1><span id="date"></span></h1>
-      <div class="to-do-input">
-        <input type="text" id="item" placeholder="What needs to be done..." /><button id="enter">Enter</button>
+  <body>
+    <main class="app">
+      <h1>My Todo List...</h1>
+      <div class="input-header">
+        <div class="to-do-input">
+          <input
+            type="text"
+            id="item"
+            placeholder="What needs to be done..."
+          /><button id="enter">Enter</button>
+        </div>
       </div>
-    </div>
-    <div class="to-do-list"></div>
-  </main>
 
-  		<footer class="info">
-			<p>Created by <a href="https://www.linkedin.com/in/deexit/">Deexit Kumar Sharma</a></p>
-			<p>Part of <a href="https://www.mountblue.io/">Mountblue Technology</a></p>
-		</footer>
+      <div class="to-do-list"></div>
 
-  
+      <div class="last-box">
+        <div class="bottomtab">
+          <p>0 item left</p>
+          <div class="states">
+            <button class="all-button">All</button>
+            <button class="active-button">Active</button>
+            <button class="completed-button">Completed</button>
+          </div>
+          <button class="clear-completed">Clear completed</button>
+        </div>
+      </div>
+    </main>
 
-  <script src="script.js"></script>
+    <footer class="info">
+      <p>
+        Created by
+        <a href="https://www.linkedin.com/in/deexit/">Deexit Kumar Sharma</a>
+      </p>
+      <p>
+        Part of <a href="https://www.mountblue.io/">Mountblue Technology</a>
+      </p>
+    </footer>
 
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>

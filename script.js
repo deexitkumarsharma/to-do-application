@@ -47,13 +47,6 @@ function deleteItem(index) {
   localStorage.setItem("items", JSON.stringify(itemsArray));
   location.reload();
 }
-
-function updateItem(text, index) {
-  itemsArray[index] = text;
-  localStorage.setItem("items", JSON.stringify(itemsArray));
-  location.reload();
-}
-
 window.onload = function () {
   displayItems();
-};2
+};
