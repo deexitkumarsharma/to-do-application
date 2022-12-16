@@ -12,24 +12,19 @@ function displayItems() {
   for (let index = 0; index < itemsArray.length; index++) {
     items += `<div class="item">
                 <div class="input-controller">
-                  <textarea disabled>${itemsArray[index]}</textarea>
-                  <div class="edit-controller">
-                    <i class="fa-solid fa-check deleteBtn"></i>
-                    <i class="fa-solid fa-pen-to-square editBtn"></i>
+                <input type="checkbox" name="" id="task-1" />
+                    <label for="task-1" id="task-1">
+                        <span class="custom-checkbox"></span>
+                        ${itemsArray[index]}
+                        </label>
+                  <div class="fa-solid fa-check deleteBtn">
                   </div>
-                </div>
-                <div class="update-controller">
-                  <button class="saveBtn">Save</button>
-                  <button class="cancelBtn">Cancel</button>
                 </div>
               </div>`;
   }
 
   document.querySelector(".to-do-list").innerHTML = items;
   activateDeleteListeners();
-  activateEditListeners();
-  activateSaveListeners();
-  activateCancelListeners();
 }
 
 function activateDeleteListeners() {
@@ -37,41 +32,6 @@ function activateDeleteListeners() {
   deleteBtn.forEach((dB, index) => {
     dB.addEventListener("click", () => {
       deleteItem(index);
-    });
-  });
-}
-
-function activateEditListeners() {
-  const editBtn = document.querySelectorAll(".editBtn");
-  const updateController = document.querySelectorAll(".update-controller");
-  const inputs = document.querySelectorAll(".input-controller textarea");
-  editBtn.forEach((eB, index) => {
-    eB.addEventListener("click", () => {
-      updateController[index].style.display = "block";
-      inputs[index].disabled = false;
-    });
-  });
-}
-
-function activateSaveListeners() {
-  const saveBtn = document.querySelectorAll(".saveBtn");
-  const inputs = document.querySelectorAll(".input-controller textarea");
-  saveBtn.forEach((sB, index) => {
-    sB.addEventListener("click", () => {
-      updateItem(inputs[index].value, index);
-    });
-  });
-}
-
-function activateCancelListeners() {
-  const cancelBtn = document.querySelectorAll(".cancelBtn");
-  const updateController = document.querySelectorAll(".update-controller");
-  const inputs = document.querySelectorAll(".input-controller textarea");
-  cancelBtn.forEach((cB, index) => {
-    cB.addEventListener("click", () => {
-      updateController[index].style.display = "none";
-      inputs[index].disabled = true;
-      inputs[index].style.border = "none";
     });
   });
 }

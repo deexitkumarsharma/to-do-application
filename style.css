@@ -5,20 +5,9 @@
 }
 
 body {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(48, 64, 64, 1) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
   min-height: 100vh;
   text-align: center;
-}
-
-button {
-  height: fit-content;
-  cursor: pointer;
-  color: #04202c;
-  background-color: #c9d1c8;
+  background: #242424;
 }
 
 .app {
@@ -55,6 +44,10 @@ button {
   padding: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  height: fit-content;
+  cursor: pointer;
+  color: #04202c;
+  background-color: #c9d1c8;
 }
 
 .to-do-list {
@@ -63,21 +56,17 @@ button {
   gap: 15px;
 }
 
-.to-do-list i {
+/* for delete button  */
+.to-do-list div {
   color: #c9d1c8;
   cursor: pointer;
 }
 
-.to-do-list .fa-pen-to-square {
-  color: #5b7065;
-}
+/* for checkbox cross  */
 
-.to-do-list button {
-  padding: 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-family: inherit;
-  border: none;
+input[type="checkbox"]:checked + label {
+  color: red;
+  text-decoration: line-through;
 }
 
 .item {
@@ -95,29 +84,10 @@ button {
   gap: 10px;
 }
 
-.input-controller textarea {
-  width: 100%;
-  outline: none;
-  border: none;
-  resize: none;
-  line-height: 1.4;
-  color: white;
-  border-radius: 10px;
-  background-color: transparent;
-  font-size: 1.2rem;
-  font-family: inherit;
-  transition: all 0.3s ease-in-out;
-}
-
-textarea:focus {
-  box-shadow: 0 0 5px white;
-}
-
-.edit-controller {
-  display: flex;
-  gap: 5px;
-}
-
-.update-controller {
-  display: none;
+.info {
+	margin: 40px auto 0;
+	color: #bfbfbf;
+	font-size: 15px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-align: center;
 }
