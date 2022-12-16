@@ -17,7 +17,7 @@ function displayItems() {
                         <span class="custom-checkbox"></span>
                         ${itemsArray[index]}
                         </label>
-                  <div class="fa-solid fa-check deleteBtn">
+                  <div class="fa-solid fa-delete-left deleteBtn">
                   </div>
                 </div>
               </div>`;
@@ -56,4 +56,4 @@ function updateItem(text, index) {
 
 window.onload = function () {
   displayItems();
-};
+};2

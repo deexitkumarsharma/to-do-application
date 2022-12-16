@@ -60,6 +60,8 @@ body {
 .to-do-list div {
   color: #c9d1c8;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* for checkbox cross  */
@@ -85,9 +87,9 @@ input[type="checkbox"]:checked + label {
 }
 
 .info {
-	margin: 40px auto 0;
-	color: #bfbfbf;
-	font-size: 15px;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-	text-align: center;
+  margin: 40px auto 0;
+  color: #bfbfbf;
+  font-size: 15px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
