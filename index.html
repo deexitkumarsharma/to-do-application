@@ -7,49 +7,52 @@
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
-    <title>To-do list</title>
+
+    <title>To-DO LIST</title>
   </head>
-
+  <button></button>
   <body>
-    <main class="app">
-      <h1>My Todo List...</h1>
-      <div class="input-header">
-        <div class="to-do-input">
-          <input
-            type="text"
-            id="item"
-            placeholder="What needs to be done..."
-          /><button id="enter">Enter</button>
-        </div>
+    <div class="wrapper">
+      <div class="task-input">
+        <input type="text" placeholder="Add a New Task + Enter" />
       </div>
 
-      <div class="to-do-list"></div>
-
-      <div class="last-box">
-        <div class="bottomtab">
-          <p>0 item left</p>
-          <div class="states">
-            <button class="all-button">All</button>
-            <button class="active-button">Active</button>
-            <button class="completed-button">Completed</button>
-          </div>
-          <button class="clear-completed">Clear completed</button>
+      <div class="controls">
+        <div class="filters">
+          <span class="active" id="all">All</span>
+          <span id="pending">Pending</span>
+          <span id="completed">Completed</span>
         </div>
+        <button class="clear-btn">Clear All</button>
       </div>
-    </main>
+      <ul class="task-box"></ul>
+      <div class="items-left">0 items left</div>
+    </div>
 
-    <footer class="info">
+    <div class="footer">
       <p>
         Created by
-        <a href="https://www.linkedin.com/in/deexit/">Deexit Kumar Sharma</a>
+        <a href="https://www.linkedin.com/in/deexit/" class="link"
+          >Deexit Kumar Sharma</a
+        >
       </p>
       <p>
-        Part of <a href="https://www.mountblue.io/">Mountblue Technology</a>
+        Part of
+        <a href="https://www.mountblue.io/" class="link"
+          >Mountblue Technology</a
+        >
       </p>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
   </body>
 </html>
+
+<!-- explanation
+1. We make a div that acts as a container for our to-do list.
+2. We make a div for the new task in which the user writes the name of the task.
+3. We create a div for the written tasks.
+4. We create a div for our todo filters
+5. And at the end, we make a "Clear All" Button. -->
