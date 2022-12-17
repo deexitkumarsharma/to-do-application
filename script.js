@@ -12,7 +12,6 @@ function Todo(id, content, isDone) {
 
 // Declare a controller
 
-
 function TodoController() {
   this.todoList = [];
   this.id = 1;
@@ -22,14 +21,12 @@ function TodoController() {
 }
 
 TodoController.prototype = {
-  
   //  {argument} key - get to localstorage
-   
+
   getTodoFromLocalstorage: function (key) {
     var todoList = JSON.parse(localStorage.getItem(key)) || [];
     return todoList;
   },
-
 
   //  {argument} key - set into localstorage
 
@@ -37,8 +34,7 @@ TodoController.prototype = {
     localStorage.setItem("todoList", JSON.stringify(key));
   },
 
-
-//  {sting} value - content todo
+  //  {sting} value - content todo
 
   handleTodoItem: function (value) {
     this.isDone = false;
@@ -48,9 +44,8 @@ TodoController.prototype = {
     return todoItem;
   },
 
-
   // {array} mainArray - find id last in array at localstorage
-   
+
   idLargestOfLocal: function (mainArray) {
     var lengthArr = mainArray.length;
 
@@ -113,7 +108,6 @@ TodoController.prototype = {
     return inputCheckbox;
   },
 
-
   /* Create new lable element
     {object} todo - item todo from addNewTodo */
 
@@ -161,7 +155,6 @@ TodoController.prototype = {
     });
     inputEdit.focus();
 
-    
     //event onblur get value edit and delete class editing when click outside this input
     inputEdit.onblur = function (e) {
       todoController.handleTodoUpdate(e);
@@ -181,13 +174,13 @@ TodoController.prototype = {
     //2nd way to do that
     inputEdit.addEventListener("keypress", myScript);
     function myScript() {
-            if (
-              event.which == todoController.ENTER_KEY ||
-              event.keyCode == todoController.ENTER_KEY
-            ) {
-              todoController.handleTodoUpdate(e);
-            }
-          }
+      if (
+        event.which == todoController.ENTER_KEY ||
+        event.keyCode == todoController.ENTER_KEY
+      ) {
+        todoController.handleTodoUpdate(e);
+      }
+    }
 
     //return node input for edit todo
     return inputEdit;
@@ -403,6 +396,7 @@ TodoController.prototype = {
   /*
    Presentation set status isDone into localstorage
    {array} list - list array get from localStorage */
+
   renderTodo: function () {
     //get from localStorage
     var list = todoController.getTodoFromLocalstorage("todoList");
