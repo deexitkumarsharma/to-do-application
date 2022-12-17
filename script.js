@@ -6,7 +6,7 @@ const taskInput = document.querySelector(".task-input input"),
 let editId,
   isEditTask = false,
   todos = JSON.parse(localStorage.getItem("todo-list"));
-  // console.log(todos);
+// console.log(todos);
 
 filters.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -79,19 +79,17 @@ function updateStatus(selectedTask) {
 //   taskInput.classList.add("active");
 // }
 
-// delete events - used event bubbling in taskbox(parent)
+// delete events - used event ELEGATION in taskbox(parent)
 let taskbox = document.querySelector(".task-box");
 taskbox.addEventListener("click", deleteTask);
+
 function deleteTask(event) {
   if (event.target.nodeName === "BUTTON") {
     let taskli = document.querySelector(".task");
     taskli.remove();
   }
   counter();
- 
 }
-
-
 
 // count all pending task
 taskbox.addEventListener("click", counter());
@@ -109,17 +107,18 @@ taskbox.addEventListener("click", counter());
 //   noOfUncheckedTasks.innerText = countOfUncheckedTasks + " tasks left";
 // }
 
-function counter(){
+function counter() {
   let res = document.querySelector(".items-left");
-  let c=0;
-  todos.forEach((elem)=>{
-    if(elem.status=='pending'){
+  let c = 0;
+  todos.forEach((elem) => {
+    if (elem.status == "pending") {
       c++;
     }
-  })
-  res.innerText=c+"items left"
+  });
+  res.innerText = c + "items left";
 }
 
+// clearAll
 
 clearAll.addEventListener("click", () => {
   isEditTask = false;
