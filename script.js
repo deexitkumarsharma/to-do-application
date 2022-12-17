@@ -6,7 +6,7 @@ const taskInput = document.querySelector(".task-input input"),
 let editId,
   isEditTask = false,
   todos = JSON.parse(localStorage.getItem("todo-list"));
-  console.log(todos);
+  // console.log(todos);
 
 filters.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -34,6 +34,7 @@ function showTodo(filter) {
                         </li>`;
       }
     });
+    counter();
   }
 
   taskBox.innerHTML = liTag || `<span>You don't have any task here</span>`;
@@ -54,6 +55,7 @@ function showMenu(selectedTask) {
       menuDiv.classList.remove("show");
     }
   });
+  counter();
 }
 
 function updateStatus(selectedTask) {
@@ -65,8 +67,8 @@ function updateStatus(selectedTask) {
     taskName.classList.remove("checked");
     todos[selectedTask.id].status = "pending";
   }
-  localStorage.setItem("todo-list", JSON.stringify(todos));
   counter();
+  localStorage.setItem("todo-list", JSON.stringify(todos));
 }
 
 // function editTask(taskId, textName) {
@@ -89,7 +91,7 @@ function deleteTask(event) {
 }
 
 // count all pending task
-
+taskbox.addEventListener("click", counter());
 
 // function findCountOfUncheckedTasks(e) {
 //   let noOfUncheckedTasks = document.querySelector(".items-left");
@@ -139,8 +141,4 @@ taskInput.addEventListener("keyup", (e) => {
     localStorage.setItem("todo-list", JSON.stringify(todos));
     showTodo(document.querySelector("span.active").id);
   }
-  counter();
 });
-
-taskbox.addEventListener("click", counter());
-taskbox.addEventListener("keyup", counter());
