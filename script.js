@@ -88,7 +88,10 @@ function deleteTask(event) {
     taskli.remove();
   }
   counter();
+ 
 }
+
+
 
 // count all pending task
 taskbox.addEventListener("click", counter());
