@@ -1,35 +1,36 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    />
-
-    <title>To-DO LIST</title>
-  </head>
-  <button></button>
-  <body>
-    <div class="wrapper">
-      <div class="task-input">
-        <input type="text" placeholder="Add a New Task + Enter" />
-      </div>
-
-      <div class="controls">
-        <div class="filters">
-          <span class="active" id="all">All</span>
-          <span id="pending">Pending</span>
-          <span id="completed">Completed</span>
-        </div>
-        <button class="clear-btn">Clear All</button>
-      </div>
-      <ul class="task-box"></ul>
-      <div class="items-left">0 items left</div>
-    </div>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+            <title>To-DO LIST</title>
+	</head>
+	<body>
+		<section class="todoapp">
+			<header class="header">
+				<h1>todo list</h1>
+				<input id="newTodo" class="new-todo" placeholder="Add a New Task + Enter">
+			</header>
+			<section id="main">
+				<input id="toggleInputAll" class="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul id="todoListView" class="todo-list"></ul>
+			</section>
+			<footer class="footer">
+        <span class="todo-count"><strong id="todoCount">0</strong> item left</span>
+        <ul class="filters">
+          <li>
+            <a class="selected" id="allWorks" onclick="changeClass(this)" href="#/">All</a>
+          </li>
+          <li>
+            <a href="#active" id="activedItems" onclick="changeClass(this)">Active</a>
+          </li>
+          <li>
+            <a href="#completed" id="completedTodos" onclick="changeClass(this)">Completed</a>
+          </li>
+        </ul>
+        <button class="clear-completed" id="btnClear">Clear completed</button>
+      </footer>
+		</section>
 
     <div class="footer">
       <p>
@@ -45,14 +46,8 @@
         >
       </p>
     </div>
-
-    <script src="script.js"></script>
-  </body>
+	
+		<script src="script.js"></script>
+	</body>
 </html>
 
-<!-- explanation
-1. We make a div that acts as a container for our to-do list.
-2. We make a div for the new task in which the user writes the name of the task.
-3. We create a div for the written tasks.
-4. We create a div for our todo filters
-5. And at the end, we make a "Clear All" Button. -->
