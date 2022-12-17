@@ -1,12 +1,18 @@
+/*
+ {number} id - id for Todo
+ {string} content - content for Todo
+ {boolean} isDone - status for Todo
+ */
+
 function Todo(id, content, isDone) {
   this.id = id;
   this.content = content;
   this.isDone = isDone;
 }
 
-/**
- * Declare a controller
- */
+// Declare a controller
+
+
 function TodoController() {
   this.todoList = [];
   this.id = 1;
@@ -16,14 +22,23 @@ function TodoController() {
 }
 
 TodoController.prototype = {
+  
+  //  {argument} key - get to localstorage
+   
   getTodoFromLocalstorage: function (key) {
     var todoList = JSON.parse(localStorage.getItem(key)) || [];
     return todoList;
   },
 
+
+  //  {argument} key - set into localstorage
+
   setTodoLocalstorage: function (key) {
     localStorage.setItem("todoList", JSON.stringify(key));
   },
+
+
+//  {sting} value - content todo
 
   handleTodoItem: function (value) {
     this.isDone = false;
@@ -34,6 +49,8 @@ TodoController.prototype = {
   },
 
 
+  // {array} mainArray - find id last in array at localstorage
+   
   idLargestOfLocal: function (mainArray) {
     var lengthArr = mainArray.length;
 
@@ -42,36 +59,43 @@ TodoController.prototype = {
     } else {
       return 0;
     }
-    return lastId;
   },
 
+  /*
+   Presentation create new a todo item
+ {array} list - id for todo
+ {object} todo - return todo object
+ */
   addNewTodo: function (todo, list) {
     list.push(todo);
     todoController.setTodoLocalstorage(list);
     return todo;
   },
 
-
-
+  /* Presentation create new a todo item
+ {value attribute} attrs - value attribute for element html
+ {attribute} element - attribute for element html
+  */
   setAttributes: function (element, attrs) {
     for (var key in attrs) {
       element.setAttribute(key, attrs[key]);
     }
   },
 
-
- // Create new checkbox input element
-
+  /*
+      Create new checkbox input element
+    {number} todoId - id checkbox
+   */
   checkboxView: function (todoId) {
-    var inpCheckbox = document.createElement("input");
-    this.setAttributes(inpCheckbox, {
+    var inputCheckbox = document.createElement("input");
+    this.setAttributes(inputCheckbox, {
       type: "checkbox",
       class: "itemList",
       id: todoId,
     });
 
     //event check for input checkbox
-    inpCheckbox.addEventListener("click", function (e) {
+    inputCheckbox.addEventListener("click", function (e) {
       //get list array from localStorage
       var list = todoController.getTodoFromLocalstorage("todoList");
       var id = e.target.getAttribute("id");
@@ -86,11 +110,12 @@ TodoController.prototype = {
       todoController.countItem();
     });
 
-    return inpCheckbox;
+    return inputCheckbox;
   },
 
 
-   // Create new lable element
+  /* Create new lable element
+    {object} todo - item todo from addNewTodo */
 
   createLableView: function (todo) {
     var lbContent = document.createElement("label");
@@ -104,6 +129,8 @@ TodoController.prototype = {
     return lbContent;
   },
 
+  /* Create new li element
+    {object} todo - item todo from addNewTodo */
 
   initTodoITem: function (todo) {
     var item = document.createElement("li");
@@ -119,6 +146,8 @@ TodoController.prototype = {
     return item;
   },
 
+  /* Create new input edit element
+   {object} todo - item todo from addNewTodo */
 
   editInputView: function (todo) {
     //get array from localStorage
@@ -132,20 +161,33 @@ TodoController.prototype = {
     });
     inputEdit.focus();
 
+    
     //event onblur get value edit and delete class editing when click outside this input
     inputEdit.onblur = function (e) {
       todoController.handleTodoUpdate(e);
     };
 
     //event onkeyup get value edit form inputEdit
-    inputEdit.onkeypress = function (e) {
-      if (
-        event.which == todoController.ENTER_KEY ||
-        event.keyCode == todoController.ENTER_KEY
-      ) {
-        todoController.handleTodoUpdate(e);
-      }
-    };
+
+    //1st way showing error
+    // inputEdit.onkeypress = function (e) {
+    //   if (
+    //     event.which == todoController.ENTER_KEY ||
+    //     event.keyCode == todoController.ENTER_KEY
+    //   ) {
+    //     todoController.handleTodoUpdate(e);
+    //   }
+    // };
+    //2nd way to do that
+    inputEdit.addEventListener("keypress", myScript);
+    function myScript() {
+            if (
+              event.which == todoController.ENTER_KEY ||
+              event.keyCode == todoController.ENTER_KEY
+            ) {
+              todoController.handleTodoUpdate(e);
+            }
+          }
 
     //return node input for edit todo
     return inputEdit;
@@ -161,7 +203,9 @@ TodoController.prototype = {
     todoController.renderTodo();
   },
 
-
+  /* Presentation update todo edit
+   {object} todo - get item todo from event get value edit
+   {array} list - array in localStorage */
   updateTodoEdit: function (todo, list) {
     for (var i = 0; i < list.length; i++) {
       if (list[i].id == todo.id) {
@@ -170,11 +214,12 @@ TodoController.prototype = {
         break;
       }
     }
-
     //return new object have edit
     return todo;
   },
 
+  /* Presentation create new button remove item todo
+   {object} todo - get item todo from event get value edit */
 
   removeButtonView: function (todo) {
     var btnRemove = document.createElement("button");
@@ -192,16 +237,17 @@ TodoController.prototype = {
     return btnRemove;
   },
 
-
+  /* Presentation create new a todo item
+  {object} todo - object render to view */
   todoView: function (todo) {
     var item = this.initTodoITem(todo); //create node li
-    var inpCheckbox = this.checkboxView(todo.id), //create node input checkbox
+    var inputCheckbox = this.checkboxView(todo.id), //create node input checkbox
       lbContent = this.createLableView(todo), //create node lable
       inputEdit = this.editInputView(todo), //create node input edit
       btnRemove = this.removeButtonView(todo); //create node button remove item todo
 
     //item append each element
-    item.appendChild(inpCheckbox);
+    item.appendChild(inputCheckbox);
     item.appendChild(lbContent);
     item.appendChild(inputEdit);
     item.appendChild(btnRemove);
@@ -209,10 +255,13 @@ TodoController.prototype = {
     //ul append each item
     document.querySelector("#todoListView").appendChild(item);
 
-    //return node li contain inpCheckbox, lbContent, inputEdit, btnRemove
+    //return node li contain inputCheckbox, lbContent, inputEdit, btnRemove
     return item;
   },
 
+  /* Presentation remove a item todo
+  {number} id - id button remove item todo
+  {array} list - list array get from localStorage */
 
   removeTodo: function (id, list) {
     list = todoController.getTodoFromLocalstorage("todoList");
@@ -222,11 +271,13 @@ TodoController.prototype = {
         break;
       }
     }
-
     //set value after remove item to localStorage
     todoController.setTodoLocalstorage(list);
   },
 
+  /* Presentation remove a item todo
+  {index} index - index in array object
+  {array} list - list array get from localStorage */
 
   countItem: function (index, list) {
     list = todoController.getTodoFromLocalstorage("todoList");
@@ -241,6 +292,7 @@ TodoController.prototype = {
     document.getElementById("todoCount").innerHTML = index;
   },
 
+  /* Presentation the events for todo */
   events: function () {
     // Event add todo
     todoController.todoInput.onkeyup = function (event) {
@@ -328,13 +380,17 @@ TodoController.prototype = {
     });
   },
 
-
+  /* Presentation clear all item todo have isDone
+   {array} list - get from localstorage */
   clearCompleted: function (list) {
     while (list.find(({ isDone }) => isDone)) {
       list.splice(list.indexOf(list.find(({ isDone }) => isDone)), 1);
     }
   },
 
+  /* Presentation set status isDone into localstorage
+   {boolean} check - isDone from event checkall
+    {array} todoList - list array get from localStorage */
 
   checkAllTodo: function (check, todoList) {
     todoList = todoController.getTodoFromLocalstorage("todoList");
@@ -344,7 +400,9 @@ TodoController.prototype = {
     }
   },
 
-
+  /*
+   Presentation set status isDone into localstorage
+   {array} list - list array get from localStorage */
   renderTodo: function () {
     //get from localStorage
     var list = todoController.getTodoFromLocalstorage("todoList");
@@ -385,7 +443,7 @@ var todo = new Todo();
 //performing the events
 todoController.events();
 
-//performing render todo display to UI
+// //performing render todo display to UI
 todoController.renderTodo();
 
 //performing count all item active
