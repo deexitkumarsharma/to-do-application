@@ -26,8 +26,8 @@ function showTodo(filter) {
       let completed = todo.status == "completed" ? "checked" : "";
       if (filter == todo.status || filter == "all") {
         liTag += `<li class="task">
-                            <label id="jalena" for=${id}>
-                                <input onclick="updateStatus(this)" type="checkbox" id=${id} id="jalena" ${completed}>
+                            <label for=${id}>
+                                <input onclick="updateStatus(this)" type="checkbox" id=${id} ${completed}>
                                 <p class=${completed}>${todo.name}</p>
                               </label>
                             <button class="delete">delete </button>
@@ -66,6 +66,7 @@ function updateStatus(selectedTask) {
     todos[selectedTask.id].status = "pending";
   }
   localStorage.setItem("todo-list", JSON.stringify(todos));
+  counter();
 }
 
 // function editTask(taskId, textName) {
@@ -84,10 +85,11 @@ function deleteTask(event) {
     let taskli = document.querySelector(".task");
     taskli.remove();
   }
+  counter();
 }
 
 // count all pending task
-taskbox.addEventListener("click", counter());
+
 
 // function findCountOfUncheckedTasks(e) {
 //   let noOfUncheckedTasks = document.querySelector(".items-left");
@@ -119,6 +121,7 @@ clearAll.addEventListener("click", () => {
   todos.splice(0, todos.length);
   localStorage.setItem("todo-list", JSON.stringify(todos));
   showTodo();
+  counter();
 });
 
 taskInput.addEventListener("keyup", (e) => {
@@ -136,4 +139,8 @@ taskInput.addEventListener("keyup", (e) => {
     localStorage.setItem("todo-list", JSON.stringify(todos));
     showTodo(document.querySelector("span.active").id);
   }
+  counter();
 });
+
+taskbox.addEventListener("click", counter());
+taskbox.addEventListener("keyup", counter());
